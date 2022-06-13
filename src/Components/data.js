@@ -27,7 +27,7 @@ const data = {
         {
             id: 1,
             img: u,
-            title: 'Apple Whatch',
+            title: 'Apple Watch',
             desk: '300$'
         },
     ]

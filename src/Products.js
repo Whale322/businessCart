@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import data from "./Components/data";
+import {Basket} from './Basket';
 
 export const Products = () => {
     const [filter, setFilter] = useState('')
     const searchText = (event) =>{
         setFilter(event.target.value);
     }
+    const basket = new Basket()
     let dataSearch = data.cardData.filter(item =>{
         return Object.keys(item).some(key =>
             item[key].toString().toLowerCase().includes(filter.toString().toLowerCase())
@@ -28,7 +30,7 @@ export const Products = () => {
                 </div>
 
 
-                {dataSearch.map((item, index) =>{
+                {dataSearch.map((item) =>{
                     return(
                         <div className="col-11 col-md-6 col-lg-3 mx-0 mb-4">
                     <div className="card p-0 overflow-hidden h-100 shadow">
@@ -36,7 +38,7 @@ export const Products = () => {
                         <div className="casrd-body">
                             <h5 className="card-title">{item.title}</h5>
                             <p className="card-text">{item.desk}</p>
-                            <button>Add to Cart</button>
+                            <button class="btn btn-primary" onClick={basket.increaseCount}>Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -46,5 +48,4 @@ export const Products = () => {
             </div>
         </section>
     )
-    
 }
